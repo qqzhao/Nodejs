@@ -1,4 +1,4 @@
 
 ### test_nodejs
 
-add test_nodejs: test syscall ,download,promise
+add test_nodejs: test syscall ,download,promise，module
