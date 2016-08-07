@@ -4,11 +4,11 @@ var promiseTest = require('./promiseTest');
 var moduleTest = require('./moduleTest');
 
 function test() {
-	// downloadTest.test();
+	downloadTest.test();
 	//sysCallTest.test();
 	// promiseTest.test();
 
-	moduleTest.test();
+	// moduleTest.test();
 }
 
 exports.test = test;

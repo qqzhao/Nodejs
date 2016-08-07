@@ -14,16 +14,36 @@ function download(url,path) {
 
 function downloadSync(url,path) {
 
-	return downloadSync5(url, path);
+	return downloadSync1(url, path);
 }
 
-//pipi产生的仍然是异步的。
+
 function downloadSync1(url,path) {
 
+	//这里pipi产生的仍然是异步的。
+	// return new Promise(function(resolve,reject){
+	// 	request(url).pipe(fs.createWriteStream(path));
+	// 	console.log(path + ' download finish...');
+	// 	resolve('download success');
+	// })
+
+	//这里可以保证正常执行。但是有可能存在一个隐患，pipe输出结果并不和req请求结束
+	//处于同一时间点。所以，如果pipe推迟执行，这里有可能也是错的。目前测试是正确的。
+	console.log('downloadSync1');
 	return new Promise(function(resolve,reject){
-		request(url).pipe(fs.createWriteStream(path));
-		console.log(path + ' download finish...');
-		resolve('download success');
+		var req = request(url);
+		req.pipe(fs.createWriteStream(path));;
+		req.on('end',() => {
+			console.log('finish');
+			resolve('success');
+		})
+
+
+		//如果pipe实现了Promise函数，则可以用下面的写法。目前没有实现
+		// .then(() => {
+		// 	console.log(path + ' download finish...');
+		// 	resolve('download success');
+		// });
 	})
 	
 }
@@ -187,6 +207,37 @@ function downloadSync6(url,path) {
 				console.log('request fail.');
 				resolve('fail');
 			}
+		})
+	})
+}
+
+//使用request实现。原理是一样的。有个问题，如何从返回的body或者response中取出data？
+function downloadSync7(url,path) {
+	
+	console.log('url:' + url);
+	return new Promise(function(resolve, reject) {
+
+		var bufferData = new Buffer('');
+		var req = request(url, function(error, response, body) {
+			if (!error && response.statusCode == 200) {
+				console.log('request success');
+			}else{
+				console.log('request fail.');
+				resolve('fail');
+			}
+		})
+
+		req.on('data',(chunk) => {
+				console.log('data');
+				var curBuf = new Buffer(chunk);
+				var length = curBuf.length + bufferData.length;
+				bufferData = Buffer.concat([bufferData,curBuf],length);
+			})
+
+		req.on('end',() => {
+			console.log('end');
+			fs.writeFileSync(path, bufferData,'binary');
+			resolve('success');
 		})
 	})
 }
