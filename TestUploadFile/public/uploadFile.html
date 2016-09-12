@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>上传文件页面</title>
+</head>
+<body>
+	<div>选取上传的文件：</div>
+	<form method="post" action="/upload/file">
+		<input type="file" name="myfile" content-type="application/octet-stream" content-disposition="form-data"/>
+		<br>
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>
