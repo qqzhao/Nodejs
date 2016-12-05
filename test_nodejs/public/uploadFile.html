@@ -5,8 +5,11 @@
 </head>
 <body>
 	<div>选取上传的文件：</div>
-	<form method="post" action="/file/uploading">
+	<form method="post" action="/file/upload enctype="multipart/form-data">
 		<input type="file" name="myfile"  />
+		<input type="file" name="myfile2"  />
+		姓氏：<input type="text" name="lname"  />
+		名字：<input type="text" name="fname"  />
 		<br>
 		<input type="submit" value="Submit" />
 	</form>

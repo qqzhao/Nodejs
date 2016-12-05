@@ -9,11 +9,19 @@ var fs = require('fs');
 function route(app){
 	app.get('/sayHello',sayHello);
 	app.get('/test',baseTest);
+
+	app.post('/file/uploadOri', function(req, resp) {
+	  // console.log(req.body, req.files);
+	  console.log('req:',req);
+	  // don't forget to delete all req.files when done
+	});
+
 	// app.post('/file/upload',multipartMiddleware,file.upload);
 
 	//console.log('multipartMiddleware:',multipartMiddleware);
 	app.post('/file/upload', multipartMiddleware, function(req, resp) {
-	  console.log(req.body, req.files);
+	  // console.log(req.body, req.files);
+	  console.log('req:',req);
 	  // don't forget to delete all req.files when done
 	});
 
