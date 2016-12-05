@@ -12,9 +12,9 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
-    "multiparty": "",
-    "util": "",
-    "busboy": "",
+    "multiparty": "~4.1.2",
+    "util": "~0.10.3",
+    "busboy": "~0.2.13",
     "serve-favicon": "~2.3.0"
   }
 }

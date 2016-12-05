@@ -62,6 +62,7 @@ router.post('/file2/', function(req, res, next){
 		console.log('finename:',filename);
 		file.on('data', function (data) {
 			// Here we can act on the data chunks streamed.
+			console.log('here');
 		});
 		
 		// Completed streaming the file.
