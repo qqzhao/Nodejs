@@ -1,0 +1,12 @@
+{
+  "name": "TestChatRooms",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node gen.js"
+  },
+  "dependencies": {
+    "crypto": "",
+    "path":""
+  }
+}
