@@ -1,23 +1,13 @@
 {
   "name": "express4-demo",
-<<<<<<< HEAD
-  "version": "0.0.1",
-=======
   "version": "0.0.0",
->>>>>>> a88333e0a25d1f04a6f63a7dc318fba257fc6027
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "express": "~4.13.4",
-  }
-}
-=======
     "co": "^4.6.0",
     "download": "^5.0.2",
     "request": "^2.74.0"
   }
 }
->>>>>>> a88333e0a25d1f04a6f63a7dc318fba257fc6027
